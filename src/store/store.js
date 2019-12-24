@@ -1,10 +1,13 @@
 import { createStore, compose, applyMiddleware, combineReducers } from "redux";
 import { save, load } from "redux-localstorage-simple";
 import authReducer from "./Reducers/authReducer";
+import accountReducer from "./Reducers/accountsReducers";
+
 import createSagaMiddleware from "redux-saga";
 import rootSaga from "./sagas";
 const rootReducer = combineReducers({
-  authState: authReducer
+  authState: authReducer,
+  accountState: accountReducer
 });
 const sagaMiddleware = createSagaMiddleware();
 const createStoreWithMiddleware = applyMiddleware(

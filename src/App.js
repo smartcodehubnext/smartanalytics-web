@@ -18,7 +18,19 @@ import { store } from "./store/store";
 import SecureLayout from "./Layouts/SecureLayout";
 import RegisterPage from "./Pages/RegisterPage";
 import VerifyEmail from "./Pages/VerifyEmail";
-
+import StaticLayout from "./Layouts/StaticLayout";
+const StaticRoute = ({ component: Component, ...rest }) => {
+  return (
+    <Route
+      {...rest}
+      render={props => (
+        <StaticLayout>
+          <Component {...props} />
+        </StaticLayout>
+      )}
+    />
+  );
+};
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const { user } = useSelector(state => state.authState);
   return (
@@ -50,7 +62,7 @@ function App() {
           <PrivateRoute component={HomePage} exact path="/" />
           <PrivateRoute component={HomePage} exact path="/home" />
           <PrivateRoute component={RedirectPage} path="/redirect" />
-          <PrivateRoute component={PrivacyPage} exact path="/privacy-policy" />
+          <StaticRoute component={PrivacyPage} exact path="/privacy-policy" />
           <Route component={VerifyEmail} exact path="/verify-email" />
         </Switch>
       </Router>

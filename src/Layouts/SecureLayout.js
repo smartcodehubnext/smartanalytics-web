@@ -27,13 +27,10 @@ export default function SecureLayout({ children }) {
             <BreadCrumb></BreadCrumb>
             {children}
           </div>
-          <div className="page-footer">
-            <p>2019 &copy; Smart codehub</p>
-          </div>
-          <MainRightSidebar></MainRightSidebar>
-          <ChatRightSidebar></ChatRightSidebar>
         </div>
       </div>
+      <MainRightSidebar></MainRightSidebar>
+      <ChatRightSidebar></ChatRightSidebar>
     </div>
   );
 }

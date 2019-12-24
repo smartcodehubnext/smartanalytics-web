@@ -6,12 +6,12 @@ export default function PrivacyPage() {
   }, []);
   return (
     <div className="row justify-content-center">
-      <div className="col-lg-8">
+      <div className="col-lg-12">
         <div className="card p-2">
           <div className="card-body">
             <h1 className="card-title">Privacy Policy</h1>
             <p>
-              Effective day August 14, 2018 If you are a visitor to a Smart
+              Effective day December 20, 2019 If you are a visitor to a Smart
               Analytics Website or a customer of a Smart Analytics Service, then
               except as expressly set forth below, this Privacy Policy applies
               to your use of such Website or Service.{" "}
