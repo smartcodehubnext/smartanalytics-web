@@ -22,7 +22,7 @@ export default function SecureLayout({ children }) {
       <div className="page-content">
         <SecondarySidebar></SecondarySidebar>
         <PageHeader></PageHeader>
-        <div className="page-inner no-page-title">
+        <div className="page-inner no-page-title" style={{ minHeight: "80vh" }}>
           <div id="main-wrapper">
             <BreadCrumb></BreadCrumb>
             {children}
