@@ -9,7 +9,10 @@ import {
   ACCOUNT_SAVE_ERROR,
   ACCOUNT_FETCH_SUCCESS,
   ACCOUNT_FETCH_ERROR,
-  ACCOUNT_FETCH_START
+  ACCOUNT_FETCH_START,
+  ACCOUNT_SELECT_START,
+  ACCOUNT_SELECT_SUCCESS,
+  ANALYTIC_ACCOUNT_FETCH
 } from "../Actions";
 import {
   GetAuthUrl,
@@ -48,6 +51,18 @@ export function* fetchAccountssaga() {
   try {
     const { data } = yield call(FetchAccounts, user.token);
     yield put({ type: ACCOUNT_FETCH_SUCCESS, payload: data });
+  } catch (e) {
+    yield put({ type: ACCOUNT_FETCH_ERROR, payload: e.response });
+  }
+}
+
+export function* selectAccountssaga({ payload }) {
+  yield put({ type: ACCOUNT_SELECT_START });
+  console.log(payload);
+
+  try {
+    yield put({ type: ACCOUNT_SELECT_SUCCESS, payload: payload });
+    yield put({ type: ANALYTIC_ACCOUNT_FETCH, payload: payload });
   } catch (e) {
     yield put({ type: ACCOUNT_FETCH_ERROR, payload: e.response });
   }

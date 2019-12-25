@@ -2,27 +2,39 @@ import React, { useEffect } from "react";
 import Chart from "chart.js";
 import { GetAuthUrl } from "../store/Service/googleAuthService";
 import { useDispatch, useSelector } from "react-redux";
-import { ACCOUNT_FETCH, ACCOUNT_GET_REDIRECT_URL } from "../store/Actions";
+import {
+  ACCOUNT_FETCH,
+  ACCOUNT_GET_REDIRECT_URL,
+  ACCOUNT_SELECT,
+  ANALYTIC_ACCOUNT_FETCH
+} from "../store/Actions";
 export default function HomePage({ match, location }) {
   const dispatch = useDispatch();
-  const { accounts, loading, error, redirectUrl } = useSelector(
-    state => state.accountState
-  );
+
+  const {
+    accounts,
+    loading,
+    error,
+    redirectUrl,
+    selectedaccount
+  } = useSelector(state => state.accountState);
+
   useEffect(() => {
     dispatch({ type: ACCOUNT_FETCH });
+
     return () => {};
-  }, [match]);
+  }, []);
 
   if (redirectUrl) {
     window.location.assign(redirectUrl);
   }
   return (
     <div className="row justify-content-center">
+      <AddAccountCard></AddAccountCard>
       {accounts &&
         accounts.map(a => {
           return <AccountCard account={a} key={a}></AccountCard>;
         })}
-      <AddAccountCard></AddAccountCard>
     </div>
   );
 }
@@ -48,15 +60,29 @@ const AddAccountCard = () => {
 };
 
 const AccountCard = ({ account }) => {
-  const selectAccount = async () => {};
+  const dispatch = useDispatch();
+  const {
+    accounts,
+    loading,
+    error,
+    redirectUrl,
+    selectedaccount
+  } = useSelector(state => state.accountState);
+
+  const selectAccount = async () => {
+    dispatch({ type: ACCOUNT_SELECT, payload: account });
+  };
   return (
-    <div className="col-lg-3">
+    <div className="col-lg-4">
       <div class="card text-center">
         <div class="card-body">
           <h5 class="card-title">{account.name}</h5>
 
-          <button onClick={selectAccount} class="btn btn-primary">
-            Select Account
+          <button onClick={selectAccount} class="btn float-left btn-primary">
+            Set Default
+          </button>
+          <button onClick={selectAccount} class="btn float-right btn-danger">
+            Drill In <i className="fa fa-arrow-right px-2"></i>
           </button>
         </div>
       </div>

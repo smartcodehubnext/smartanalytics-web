@@ -16,7 +16,7 @@ export default function SecondarySidebar() {
               <span>Dashboard</span>
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/home">
               <i className="menu-icon icon-apps"></i>
               <span>Apps</span>
@@ -37,6 +37,7 @@ export default function SecondarySidebar() {
               </li>
             </ul>
           </li>
+          */}
           <li className="menu-divider"></li>
           <li>
             <Link to="/">

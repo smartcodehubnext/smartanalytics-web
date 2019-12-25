@@ -2,11 +2,13 @@ import { createStore, compose, applyMiddleware, combineReducers } from "redux";
 import { save, load } from "redux-localstorage-simple";
 import authReducer from "./Reducers/authReducer";
 import accountReducer from "./Reducers/accountsReducers";
+import analyticAccountReducer from "./Reducers/analyticAccountReducer";
 
 import createSagaMiddleware from "redux-saga";
 import rootSaga from "./sagas";
 const rootReducer = combineReducers({
   authState: authReducer,
+  analyticAccountState: analyticAccountReducer,
   accountState: accountReducer
 });
 const sagaMiddleware = createSagaMiddleware();
