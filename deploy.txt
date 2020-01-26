@@ -1,0 +1,16 @@
+server {
+        listen 80;
+        server_name smartanalytics.tech www.smartanalytics.tech;
+        root /home/neeraj/Applications/SmartAnalytics/smartanalytics-web/build;
+        index index.html;
+        location / {
+            try_files $uri /index.html;
+        }
+        
+}
+
+cd /etc/nginx/sites-available/
+sudo nano smartanalytics.tech.confg
+ sudo ln -s /etc/nginx/sites-available/smartanalytics.tech.confg /etc/nginx/sites-enabled/smartanalytics.tech.confg
+sudo service nginx restart
+
