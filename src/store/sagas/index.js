@@ -9,7 +9,8 @@ import {
   ACCOUNT_GET_REDIRECT_URL,
   ACCOUNT_SELECT_SUCCESS,
   ACCOUNT_SELECT,
-  ANALYTIC_ACCOUNT_FETCH
+  ANALYTIC_ACCOUNT_FETCH,
+  ANALYTIC_DATA_FETCH
 } from "../Actions";
 import {
   loginUserSaga,
@@ -23,7 +24,7 @@ import {
   getRedirectUrlSaga,
   selectAccountssaga
 } from "./accountSaga";
-import { fetchAnalyticAccountsaga } from "./analyticAccountSaga";
+import { fetchAnalyticAccountsaga, fetchAnalytiDatasaga } from "./analyticAccountSaga";
 
 export default function*() {
   yield all([
@@ -36,6 +37,8 @@ export default function*() {
     takeEvery(ACCOUNT_SAVE, saveAccountsaga),
     takeEvery(ACCOUNT_SELECT, selectAccountssaga),
     takeEvery(ACCOUNT_GET_REDIRECT_URL, getRedirectUrlSaga),
-    takeEvery(ANALYTIC_ACCOUNT_FETCH, fetchAnalyticAccountsaga)
+    takeEvery(ANALYTIC_ACCOUNT_FETCH, fetchAnalyticAccountsaga),
+
+    takeEvery(ANALYTIC_DATA_FETCH,fetchAnalytiDatasaga)
   ]);
 }
