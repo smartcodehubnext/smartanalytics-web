@@ -11,7 +11,7 @@ export default function LoginPage() {
     email: "",
     password: ""
   });
-  if (user.token) {
+  if (user && user.token) {
     if (!user.emailConfirmed) return <Redirect to="/verify-email" />;
     else return <Redirect to="/" />;
   }

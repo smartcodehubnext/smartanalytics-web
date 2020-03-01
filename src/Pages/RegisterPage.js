@@ -15,7 +15,7 @@ export default function RegisterPage() {
 
     isTermAggred: false
   });
-  if (user.email) {
+  if (user && user.email) {
     if (!user.emailConfirmed) return <Redirect to="/verify-email" />;
     else return <Redirect to="/" />;
   }

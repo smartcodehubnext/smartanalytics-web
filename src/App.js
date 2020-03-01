@@ -37,7 +37,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={props =>
-        user.token ? (
+        user &&  user.token ? (
           user.emailConfirmed ? (
             <SecureLayout>
               <Component {...props} />
