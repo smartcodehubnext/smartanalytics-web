@@ -44,7 +44,7 @@ export default (state = initialState, { type, payload }) => {
     return {
       ...state,
       loading: false,
-      records: [...payload],
+      records: payload,
       error: ""
     };
   case ActionTypes.ANALYTIC_DATA_FETCH_ERROR :
