@@ -19,6 +19,7 @@ import SecureLayout from "./Layouts/SecureLayout";
 import RegisterPage from "./Pages/RegisterPage";
 import VerifyEmail from "./Pages/VerifyEmail";
 import StaticLayout from "./Layouts/StaticLayout";
+import Accountdetail from "./Pages/Accounts/Accountdetail";
 const StaticRoute = ({ component: Component, ...rest }) => {
   return (
     <Route
@@ -62,6 +63,7 @@ function App() {
           <PrivateRoute component={HomePage} exact path="/" />
           <PrivateRoute component={HomePage} exact path="/home" />
           <PrivateRoute component={RedirectPage} path="/redirect" />
+          <PrivateRoute component={Accountdetail} path="/account" />
           <StaticRoute component={PrivacyPage} exact path="/privacy-policy" />
           <Route component={VerifyEmail} exact path="/verify-email" />
         </Switch>

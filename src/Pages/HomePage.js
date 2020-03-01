@@ -8,6 +8,7 @@ import {
   ACCOUNT_SELECT,
   ANALYTIC_ACCOUNT_FETCH
 } from "../store/Actions";
+import { useHistory } from "react-router-dom";
 export default function HomePage({ match, location }) {
   const dispatch = useDispatch();
 
@@ -68,9 +69,11 @@ const AccountCard = ({ account }) => {
     redirectUrl,
     selectedaccount
   } = useSelector(state => state.accountState);
-
+  const historystack = useHistory();
   const selectAccount = async () => {
     dispatch({ type: ACCOUNT_SELECT, payload: account });
+    historystack.push(`./account`)
+
   };
   return (
     <div className="col-lg-4">
