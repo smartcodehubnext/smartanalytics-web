@@ -13,6 +13,6 @@ npm install
 echo ':: Building  Now'
 npm run build
 
-cp -r /home/neeraj/Projects/smart2.0/smartanalytics-web/build  /home/neeraj/Deployment-production/Smartanalytics/smartanalytics-web
+cp -r /home/neeraj/Projects/smart2.0/smartanalytics-web/build/.  /home/neeraj/Deployment-production/Smartanalytics/smartanalytics-web
 
 
